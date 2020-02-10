@@ -1,5 +1,7 @@
 {
   "name": "PasTrack",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
