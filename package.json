@@ -29,6 +29,7 @@
     "cordova-plugin-device-motion": "^2.0.1",
     "cordova-plugin-gyroscope": "^0.1.4",
     "core-js": "^2.5.4",
+    "jwt-decode": "^2.2.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
@@ -43,6 +44,7 @@
     "@angular/compiler-cli": "~8.1.2",
     "@angular/language-service": "~8.1.2",
     "@ionic/angular-toolkit": "^2.1.1",
+    "@ionic/lab": "3.1.0",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
