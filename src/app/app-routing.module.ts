@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'tab2',
     loadChildren: () => import('./tab2/tab2.module').then( m => m.Tab2PageModule)
+  },
+  {
+    path: 'disconnected',
+    loadChildren: () => import('./disconnected/disconnected.module').then( m => m.DisconnectedPageModule)
   }
 ];
 @NgModule({

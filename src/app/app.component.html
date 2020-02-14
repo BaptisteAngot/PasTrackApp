@@ -18,9 +18,13 @@
           </ion-tab-button>
 
           <!--PERSON-->
-          <ion-tab-button tab="login">
+          <ion-tab-button tab="login" *ngIf="isconnected() == false">
             <ion-icon name="person"></ion-icon>
             <ion-label>Login</ion-label>
+          </ion-tab-button>
+          <ion-tab-button *ngIf="isconnected() == true" (click)="showConfirm()">
+            <ion-icon name="person"></ion-icon>
+            <ion-label>Deconnexion</ion-label>
           </ion-tab-button>
 
           <ion-tab-button tab="tab1">

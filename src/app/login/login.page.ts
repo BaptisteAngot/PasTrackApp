@@ -51,6 +51,12 @@ export class LoginPage implements OnInit {
     }
   }
 
+    isconnected() {
+        if (this.authService.isUserLoggedIn() === true) {
+            this.router.navigateByUrl('tab1');
+        }
+    }
+
    ngOnInit() {
     }
 
