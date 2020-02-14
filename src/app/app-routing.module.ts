@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
     {
         path: 'map',
         loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)
@@ -26,7 +26,12 @@ const routes: Routes = [
     {
         path: 'tab2',
         loadChildren: () => import('./tab2/tab2.module').then(m => m.Tab2PageModule)
+    },
+    {
+        path: 'login',
+        loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
     }
+
 ];
 
 @NgModule({

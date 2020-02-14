@@ -1,8 +1,62 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>heart</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Podomètre
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+    <div class="informations">
+        <div class="first">
+            <ion-icon name="heart"></ion-icon>
+            <p>Distance totale : 29,96 km</p>
+        </div>
+        <div class="second">
+            <ion-icon name="heart"></ion-icon>
+            <p>Calories totales : 1710,67 k.cal</p>
+        </div>
+        <div class="third">
+            <ion-icon name="heart"></ion-icon>
+            <p>Durée totale : 8,92 heure</p>
+        </div>
+        <div class="total-step">
+            <ion-icon name="heart"></ion-icon>
+            <p>Nombre de pas total : 12765</p>
+        </div>
+    </div>
+
+    <div class="charts">
+        <!--      BAR CHART -->
+                <ion-card>
+                    <ion-card-header>
+                        Bar Chart
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas #barCanvas></canvas>
+                    </ion-card-content>
+                </ion-card>
+
+        <!--      DOUGHNUT CHART
+                <ion-card>
+                    <ion-card-header>
+                        Doughnut Chart
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas #doughnutCanvas></canvas>
+                    </ion-card-content>
+                </ion-card> -->
+
+        <!--      LINE CHART
+                <ion-card>
+                    <ion-card-header>
+                        Line Chart
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas #lineCanvas></canvas>
+                    </ion-card-content>
+                </ion-card> -->
+
+    </div>
 </ion-content>
