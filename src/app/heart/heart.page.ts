@@ -49,7 +49,7 @@ export class HeartPage implements OnInit {
                     yAxes: [
                         {
                             ticks: {
-                                beginAtZero: true
+                                beginAtZero: true,
                             }
                         }
                     ]
