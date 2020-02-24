@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapPage implements OnInit {
 
-  constructor() { }
+  constructor(
+  ) {
+
+  }
 
   ngOnInit() {
   }
 
+  onMapLoad(map) {
+    map.resize();
+  }
 }
