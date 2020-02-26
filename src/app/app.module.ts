@@ -6,6 +6,7 @@ import { DeviceMotion, DeviceMotionAccelerationData  } from '@ionic-native/devic
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,12 +18,20 @@ import {HttpClientModule} from '@angular/common/http';
       AppComponent
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [
+      BrowserModule,
+      IonicModule.forRoot(),
+      AppRoutingModule,
+      HttpClientModule,
+      NgxMapboxGLModule.withConfig({
+          accessToken: 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g',
+  })],
   providers: [
     DeviceMotion,
     Gyroscope,
     StatusBar,
     SplashScreen,
+    NgxMapboxGLModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
