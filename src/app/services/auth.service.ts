@@ -5,13 +5,12 @@ import {User} from '../model/user';
 import * as jwt_decode from 'jwt-decode';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-      .append('Access-Control-Allow-Origin', '*')
-      .append('Access-Control-Allow-Headers',
-          'Origin, X-Requested-With, Content-Type, Accept, Authorization,  X-Auth')
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+        .append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization,  X-Auth')
+        .append('Access-Control-Allow-Origin', 'http://185.216.25.16:5000/')
 };
 
-const apiUrl = 'http://185.216.25.16:3000/user';
+const apiUrl = 'http://185.216.25.16:5000/users';
 
 export class JwtResponse {
   constructor(
@@ -27,19 +26,16 @@ export class AuthService {
 
   constructor(private  http: HttpClient) {  }
 
-  login(identifiant: User) {
-    return this.http.post<User>(apiUrl + '/login', identifiant)
-        .pipe(map(
-            userData => {
-              sessionStorage.setItem('email', identifiant.email);
-              const tokenStr = 'Bearer ' + userData.token;
-              const decode = jwt_decode(tokenStr);
-              sessionStorage.setItem('role', decode.role);
-              sessionStorage.setItem('token', tokenStr);
-              return userData;
-            }
-        ));
-  }
+    login(identifiant: User) {
+        return this.http.post<User>(apiUrl + '/login', identifiant)
+            .pipe(map(
+                userData => {
+                    sessionStorage.setItem('email', identifiant.email);
+                    const tokenStr = 'Bearer ' + userData.token;
+                    sessionStorage.setItem('token', tokenStr);
+                    return userData;
+                }));
+    }
 
   isUserLoggedIn() {
     const user = sessionStorage.getItem('token');

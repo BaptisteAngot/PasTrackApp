@@ -27,29 +27,29 @@ export class LoginPage implements OnInit {
     get f() {
         return this.form.controls;
     }
-  login() {
-    this.submitted = true;
-    const val = this.form.value;
-    console.log(val);
-    if (val.email && val.password ) {
-        console.log('ok');
-        this.loading = true;
-        this.authService.login(this.form.value)
-          .subscribe(
-              (res) => {
-                console.log(res);
-                console.log('User is logged in');
-                this.router.navigateByUrl('tab1');
-              },
-              error => {
-                this.alert.error(error);
-                this.loading = false;
-              }
-          );
-    } else {
-        console.log('Error');
+    login() {
+        this.submitted = true;
+
+        const val = this.form.value;
+        console.log(val);
+        if (val.email && val.password) {
+            console.log('Val ok');
+            this.loading = true;
+            this.authService.login(this.form.value)
+                .subscribe(
+                    (res) => {
+                        console.log(res);
+                        console.log('User is logged in');
+                        this.router.navigateByUrl('tab1');
+                    },
+                    error => {
+                        console.log(error);
+                        this.alert.error(error);
+                        this.loading = false;
+                    }
+                );
+        }
     }
-  }
 
     isconnected() {
         if (this.authService.isUserLoggedIn() === true) {
