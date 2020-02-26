@@ -1,8 +1,83 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>heart</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Podomètre
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="secondary">
+    <ion-card>
+        <ion-list>
+            <ion-item lines="none">
+                <ion-icon src="./assets/icon/map-outline.svg" size="large"></ion-icon>
+                <ion-text margin-start>
+                    <p class="text">Distance totale <br/>
+                        <span class="text_number">29,96 km</span>
+                    </p>
+                </ion-text>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-icon src="./assets/icon/body.svg" size="large"></ion-icon>
+                <ion-text margin-start>
+                    <p class="text">Calories totales : <br/>
+                        <span class="text_number">1710,67 k.cal</span>
+                    </p>
+                </ion-text>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-icon src="./assets/icon/time.svg" size="large"></ion-icon>
+                <ion-text margin-start>
+                    <p class="text">Durée totale : <br/>
+                        <span class="text_number">8,92 heure</span>
+                    </p>
+                </ion-text>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-icon src="./assets/icon/footstep.svg" size="large"></ion-icon>
+                <ion-text margin-start>
+                    <p class="text">Nombre de pas total : <br/>
+                        <span class="text_number">12765</span>
+                    </p>
+                </ion-text>
+
+            </ion-item>
+        </ion-list>
+    </ion-card>
+
+    <div class="charts">
+        <!--      BAR CHART -->
+        <ion-card color="light">
+            <ion-card-header>
+                Bar Chart
+            </ion-card-header>
+            <ion-card-content>
+                <canvas #barCanvas height="40vh" width="80vw"></canvas>
+            </ion-card-content>
+        </ion-card>
+
+        <!--      DOUGHNUT CHART
+                <ion-card>
+                    <ion-card-header>
+                        Doughnut Chart
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas #doughnutCanvas></canvas>
+                    </ion-card-content>
+                </ion-card> -->
+
+        <!--      LINE CHART
+                <ion-card>
+                    <ion-card-header>
+                        Line Chart
+                    </ion-card-header>
+                    <ion-card-content>
+                        <canvas #lineCanvas></canvas>
+                    </ion-card-content>
+                </ion-card> -->
+
+    </div>
 </ion-content>
