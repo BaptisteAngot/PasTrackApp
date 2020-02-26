@@ -11,14 +11,18 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+      AppComponent
+  ],
   entryComponents: [],
   imports: [
       BrowserModule,
       IonicModule.forRoot(),
       AppRoutingModule,
+      HttpClientModule,
       NgxMapboxGLModule.withConfig({
           accessToken: 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g',
   })],

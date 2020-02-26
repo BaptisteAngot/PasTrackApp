@@ -30,8 +30,11 @@ const routes: Routes = [
     {
         path: 'login',
         loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+    },
+    {
+    path: 'disconnected',
+    loadChildren: () => import('./disconnected/disconnected.module').then( m => m.DisconnectedPageModule)
     }
-
 ];
 
 @NgModule({
