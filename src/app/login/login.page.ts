@@ -41,7 +41,6 @@ export class LoginPage implements OnInit {
                     this.presentAlert(err);
                 }
             }).then();
-            console.log(resultConnection);
         }
     }
 
