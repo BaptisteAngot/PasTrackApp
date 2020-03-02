@@ -29,15 +29,25 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    // @ts-ignore
+    this.authService.authState.subscribe((state) => {
+      if (state) {
+        this.router.navigate(['tab1']);
+      } else {
+        this.router.navigate(['login']);
+      }
+    });
   }
 
   isconnected() {
-    return this.authService.isUserLoggedIn() === true;
+    // @ts-ignore
+    return this.authService.isAuthenticated() === true;
   }
 
   disconnected() {
     this.authService.logout();
-    this.router.navigateByUrl('login');
+    console.log(this.authService.isAuthenticated());
     this.ngOnInit();
   }
 
@@ -56,7 +66,6 @@ export class AppComponent implements OnInit {
         {
           text: 'Oui',
           handler: () => {
-            console.log('Confirm Okay.');
             this.disconnected();
           }
         }
@@ -64,6 +73,4 @@ export class AppComponent implements OnInit {
     });
     await confirm.present();
   }
-
-
 }

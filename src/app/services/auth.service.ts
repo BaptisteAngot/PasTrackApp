@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {map} from 'rxjs/operators';
 import {User} from '../model/user';
-import * as jwt_decode from 'jwt-decode';
+import { Storage } from '@ionic/storage';
+import { BehaviorSubject } from 'rxjs';
+import {ToastController, Platform, AlertController} from '@ionic/angular';
+import {Router} from '@angular/router';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -11,45 +13,68 @@ const httpOptions = {
 };
 
 const apiUrl = 'http://185.216.25.16:5000/users';
-
-export class JwtResponse {
-  constructor(
-      public jwttoken: string,
-  ) {
-  }
-}
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
-  constructor(private  http: HttpClient) {  }
+  authState = new BehaviorSubject(false);
+  constructor(
+      private  http: HttpClient,
+      private storage: Storage,
+      private router: Router,
+      private platform: Platform,
+      public toastController: ToastController,
+      private alertCtrl: AlertController
+  ) {
+      this.platform.ready().then(() => {
+          this.isUserLoggedIn();
+      });
+  }
 
-    login(identifiant: User) {
-        return this.http.post<User>(apiUrl + '/login', identifiant)
-            .pipe(map(
-                userData => {
-                    sessionStorage.setItem('email', identifiant.email);
-                    const tokenStr = 'Bearer ' + userData.token;
-                    sessionStorage.setItem('token', tokenStr);
-                    return userData;
-                }));
-    }
+  async login(identifiant: User, errorcb) {
+    return this.http.post(apiUrl + '/login', identifiant, httpOptions)
+        .subscribe((data: any) => {
+            const session = {
+                mail: identifiant.email,
+                token: data.jwtoken
+            };
+            this.storage.set('USER_INFO', session ).then((response) => {
+                this.router.navigate(['tab1']);
+                this.authState.next(true);
+            });
+        },  error => {
+            if (error.statusText === 'Unknown Error') {
+                errorcb('Pas de connexion');
+            } else if (error.statusText === 'Unauthorized') {
+                errorcb('L\'identifiant ou le mot de passe est incorrect');
+            } else {
+                console.log(error);
+            }
+        });
+  }
 
   isUserLoggedIn() {
-    const user = sessionStorage.getItem('token');
-    console.log(!(user === null));
-    return !(user === null);
+      this.storage.get('USER_INFO').then((response) => {
+         if (response) {
+             this.authState.next(true);
+         }
+      });
   }
 
   logout() {
-    sessionStorage.removeItem('email');
-    sessionStorage.removeItem('role');
-    sessionStorage.removeItem('token');
+      this.storage.clear().then(() => {
+          this.router.navigate(['login']);
+      });
+      this.authState.next(false);
   }
 
   register(identifiant: User) {
     return this.http.post<User>(apiUrl + '/signup', identifiant);
+  }
+
+  isAuthenticated() {
+      return this.authState.value;
   }
 }
