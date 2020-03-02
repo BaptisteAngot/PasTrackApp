@@ -33,8 +33,8 @@ export class AuthService {
       });
   }
 
-  async login(identifiant: User) {
-    this.http.post(apiUrl + '/login', identifiant, httpOptions)
+  async login(identifiant: User, errorcb) {
+    return this.http.post(apiUrl + '/login', identifiant, httpOptions)
         .subscribe((data: any) => {
             const session = {
                 mail: identifiant.email,
@@ -44,13 +44,11 @@ export class AuthService {
                 this.router.navigate(['tab1']);
                 this.authState.next(true);
             });
-        }, async error => {
+        },  error => {
             if (error.statusText === 'Unknown Error') {
-                console.log('Pas de connexion');
-                return 1;
+                errorcb('Pas de connexion');
             } else if (error.statusText === 'Unauthorized') {
-                console.log('Identifiant erroné');
-                return 2;
+                errorcb('L\'identifiant ou le mot de passe est incorrect');
             } else {
                 console.log(error);
             }
