@@ -13,6 +13,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 
+import { IonicStorageModule } from '@ionic/storage';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+
 @NgModule({
   declarations: [
       AppComponent
@@ -21,17 +25,20 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
       BrowserModule,
       IonicModule.forRoot(),
+      IonicStorageModule.forRoot(),
       AppRoutingModule,
       HttpClientModule,
       NgxMapboxGLModule.withConfig({
           accessToken: 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g',
-  })],
+      })],
   providers: [
     DeviceMotion,
     Gyroscope,
     StatusBar,
     SplashScreen,
     NgxMapboxGLModule,
+    AuthGuardService,
+    AuthService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

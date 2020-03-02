@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
 import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-tab1',
@@ -18,9 +19,11 @@ export class Tab1Page {
   public accZ: any;
   public orientation: any;
 
+
   constructor(
       private deviceMotion: DeviceMotion,
-      private gyroscope: Gyroscope
+      private gyroscope: Gyroscope,
+      private authService: AuthService
   ) {}
 
   getgyro() {
@@ -48,5 +51,9 @@ export class Tab1Page {
       this.accZ = acceleration.z;
     });
 
+  }
+
+  logoutUser() {
+    this.authService.logout();
   }
 }
