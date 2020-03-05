@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { ModalController } from '@ionic/angular';
 import { Chart } from "chart.js";
+import { ModalPage } from '../modal/modal.page'
 
 @Component({
     selector: 'app-heart',
@@ -18,7 +20,20 @@ export class HeartPage implements OnInit {
   private doughnutChart: Chart;
   private lineChart: Chart;
 
-  constructor() {}
+  constructor(public modalController: ModalController) {}
+
+  async presentModal() {
+    console.log("COUCOU");
+    
+    const modal = await this.modalController.create({
+      component: ModalPage
+    });
+    return await modal.present();
+  }
+
+
+
+
 
   ngOnInit() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {

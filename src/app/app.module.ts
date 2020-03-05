@@ -17,7 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
-
+import { ModalPageModule } from './modal/modal.module';
 @NgModule({
   declarations: [
       AppComponent
@@ -25,6 +25,7 @@ import { AuthService } from './services/auth.service';
   entryComponents: [],
   imports: [ 
       FormsModule,  
+      ModalPageModule,
       BrowserModule,
       IonicModule.forRoot(),
       IonicStorageModule.forRoot(),
