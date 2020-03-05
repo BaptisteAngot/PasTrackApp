@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -22,7 +23,8 @@ import { AuthService } from './services/auth.service';
       AppComponent
   ],
   entryComponents: [],
-  imports: [
+  imports: [ 
+      FormsModule,  
       BrowserModule,
       IonicModule.forRoot(),
       IonicStorageModule.forRoot(),
