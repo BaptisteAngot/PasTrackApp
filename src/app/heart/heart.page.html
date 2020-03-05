@@ -10,10 +10,10 @@
 <ion-content color=" ">
   <div class="wrap">
     <div class="arround">
-      <h2 class="title haut ">
-        pas
+      <h2 class="title bas ">
+       PAS
       </h2>
-      <h2 class="title bas  text_number">1265</h2>
+      <h2 class="title haut  text_number">1265</h2>
       <section class="stage">
         <figure class="ball"><span class="shadow"></span></figure>
       </section>
@@ -28,7 +28,7 @@
             size="large"
             class="icon"
           ></ion-icon>
-          <p class="text" text-center>
+          <p class="text" text-center class="titlo">
             Distance <br />
             <span class="text_number num">8,92km</span>
           </p>
@@ -41,7 +41,7 @@
             size="large"
             class="icon"
           ></ion-icon>
-          <p class="text" text-center>
+          <p class="text" text-center class="titlo">
             Durée totale : <br />
             <span class="text_number num">153 kcal</span>
           </p>
@@ -54,7 +54,7 @@
             size="large"
             class="icon"
           ></ion-icon>
-          <p class="text" text-center>
+          <p class="text" text-center class="titlo">
             Temps de marche<br />
             <span class="text_number num">8,92 heure</span>
           </p>
@@ -74,21 +74,15 @@
     </ion-card>
 
     <ion-card color="light">
-      <ion-card-header>
+      <ion-card-header text-center>
         Line Chart
       </ion-card-header>
       <ion-card-content>
         <canvas #lineCanvas></canvas>
       </ion-card-content>
     </ion-card>
-
-    <ion-card color="light">
-      <ion-card-header>
-        Doughnut Chart
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #doughnutCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
   </div>
+              
+            
+
 </ion-content>
