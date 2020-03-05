@@ -64,25 +64,37 @@
   </ion-grid>
 
   <div class="ion-padding">
-    <ion-card color="light" (click)="presentModal()">
-      <ion-card-header text-center>
-        Statistique de la semaine
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #barCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
+    
 
-    <ion-card color="light">
-      <ion-card-header text-center>
-        Line Chart
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #lineCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
-  </div>
+    
+  
               
-            
+  <ion-slides>
 
+    <ion-slide>
+      <div class="slide">
+        <ion-card color="light" (click)="presentModal()">
+          <ion-card-header text-center>
+            Statistique de la semaine
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #barCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card color="light">
+        <ion-card-header text-center>
+          Line Chart
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #lineCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>    
+</div>
 </ion-content>
