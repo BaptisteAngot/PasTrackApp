@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { ModalController } from '@ionic/angular';
 import { Chart } from "chart.js";
-import { ModalPage } from '../modal/modal.page'
+import { ModalPage } from '../modal/modal.page';
 
 @Component({
     selector: 'app-heart',
@@ -23,7 +23,7 @@ export class HeartPage implements OnInit {
   constructor(public modalController: ModalController) {}
 
   async presentModal() {
-    console.log("COUCOU");
+    // console.log("COUCOU");
     
     const modal = await this.modalController.create({
       component: ModalPage
