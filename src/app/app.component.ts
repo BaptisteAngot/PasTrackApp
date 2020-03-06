@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {AuthService} from './services/auth.service';
 import { AlertController } from '@ionic/angular';
+import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 
 @Component({
   selector: 'app-root',
@@ -19,12 +20,19 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private router: Router,
     private authService: AuthService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private backgroundMode: BackgroundMode,
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
+    this.backgroundMode.configure({
+      title: 'PasTrack',
+      hidden: false,
+      text: 'PasTrack compte vos pas'
+    });
+    this.backgroundMode.enable();
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
@@ -33,7 +41,7 @@ export class AppComponent implements OnInit {
     // @ts-ignore
     this.authService.authState.subscribe((state) => {
       if (state) {
-        this.router.navigate(['tab1']);
+        this.router.navigate(['heart']);
       } else {
         this.router.navigate(['login']);
       }

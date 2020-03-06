@@ -12,7 +12,7 @@ const httpOptions = {
         .append('Access-Control-Allow-Origin', 'http://185.216.25.16:5000/')
 };
 
-const apiUrl = 'http://185.216.25.16:5000/users';
+const apiUrl = 'https://185.216.25.16:5000/users';
 @Injectable({
   providedIn: 'root'
 })
@@ -41,8 +41,8 @@ export class AuthService {
                 token: data.jwtoken
             };
             this.storage.set('USER_INFO', session ).then((response) => {
-                this.router.navigate(['tab1']);
                 this.authState.next(true);
+                this.router.navigate(['heart']);
             });
         },  error => {
             if (error.statusText === 'Unknown Error') {

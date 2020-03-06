@@ -7,9 +7,10 @@ import {Gyroscope, GyroscopeOrientation, GyroscopeOptions} from '@ionic-native/g
 import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import { Device } from '@ionic-native/device/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-
+import { AuthService } from '../services/auth.service';
 import {Data} from '../model/Data';
 import {Result} from '../model/Result';
+import { Router } from '@angular/router';
 
 const apiUrl = 'https://185.216.25.16:5000/datas';
 
@@ -73,7 +74,17 @@ export class HeartPage implements OnInit {
   private lineChart: Chart;
 
   // tslint:disable-next-line:max-line-length
-  constructor(public modalController: ModalController, private device: Device, private deviceMotion: DeviceMotion, private gyroscope: Gyroscope, private api: HttpClient, private geolocation: Geolocation) {
+  constructor(
+      public modalController: ModalController,
+      private device: Device,
+      private deviceMotion: DeviceMotion,
+      private gyroscope: Gyroscope,
+      private api: HttpClient,
+      private geolocation: Geolocation,
+      private authService: AuthService,
+      private router: Router
+  ) {
+    this.isconnected();
     this.minX = 0;
     this.maxX = 0;
     this.minY = 0;
@@ -82,7 +93,11 @@ export class HeartPage implements OnInit {
     this.maxZ = 0;
     this.gyro();
   }
-
+  isconnected() {
+    if (this.authService.isAuthenticated() === false) {
+      this.router.navigate(['login']);
+    }
+  }
   gyro() {
 
     this.geolocation.getCurrentPosition().then((resp) => {}).catch((error) => {
@@ -179,7 +194,7 @@ export class HeartPage implements OnInit {
       const AxeMax = Math.max(this.result.X, this.result.Y, this.result.Z);
 
       if ( this.result.X === AxeMax) {
-        let treshold = ((this.minX + this.maxX) / 2);
+        const treshold = ((this.minX + this.maxX) / 2);
         let somme = 0;
         let moyenne = 0;
 
@@ -190,34 +205,34 @@ export class HeartPage implements OnInit {
         moyenne = (moyenne / this.Array.length );
 
         for (let i = 0; i < this.Array.length; i++) {
-          somme += (Math.pow(this.Array[i]["accX"] - moyenne, 2));
+          somme += (Math.pow(this.Array[i].accX - moyenne, 2));
         }
         let stepValid = 0;
         for (let i = 0; i < this.Array.length; i++) {
-          let a = i + 1;
-          if (this.Array[i]["accX"] <= 8.5 && this.Array[i]['accX'] >= -8.5){
+          const a = i + 1;
+          if (this.Array[i].accX <= 8.5 && this.Array[i].accX >= -8.5) {
             const et = Math.sqrt((somme / (this.Array.length - 1)));
-            if (i !== (this.Array.length - 1) && (this.Array[i]["accX"] < et || this.Array[i]["accX"] > (et * -1))) {
-              if (this.Array[i]["accX"] >= treshold && this.Array[a]["accX"] <= treshold) {
+            if (i !== (this.Array.length - 1) && (this.Array[i].accX < et || this.Array[i].accX > (et * -1))) {
+              if (this.Array[i].accX >= treshold && this.Array[a].accX <= treshold) {
                 stepValid++;
               }
             }
           }
         }
         if ( this.stepStatus ) {
-          if (stepValid <= 3 && stepValid >= 1){
+          if (stepValid <= 3 && stepValid >= 1) {
             this.step = (Number(this.step) + Number(stepValid));
           } else {
             this.stepStatus = false;
           }
         } else {
-          if (stepValid <= 3 && stepValid >= 1){
+          if (stepValid <= 3 && stepValid >= 1) {
             this.stepStatus = true;
           }
         }
       }
       if ( this.result.Y === AxeMax ) {
-        let treshold = ((this.minY + this.maxY) / 2);
+        const treshold = ((this.minY + this.maxY) / 2);
         let somme = 0;
         let moyenne = 0;
         let stepValid = 0;
@@ -227,36 +242,36 @@ export class HeartPage implements OnInit {
         moyenne = (moyenne / this.Array.length );
 
         for (let i = 0; i < this.Array.length; i++) {
-          somme += (Math.pow(this.Array[i]["accY"] - moyenne, 2));
+          somme += (Math.pow(this.Array[i].accY - moyenne, 2));
         }
 
 
         for (let i = 0; i < this.Array.length; i++) {
-          let a = i + 1;
-          if (this.Array[i]["accY"] <= 8.5 && this.Array[i]['accY'] >= -8.5){
+          const a = i + 1;
+          if (this.Array[i].accY <= 8.5 && this.Array[i].accY >= -8.5) {
             const et = Math.sqrt((somme / (this.Array.length - 1)));
 
-            if (i !== (this.Array.length - 1) && (this.Array[i]["accY"] < et || this.Array[i]["accY"] > (et * -1))) {
-              if (this.Array[i]["accY"] >= treshold && this.Array[a]["accY"] <= treshold) {
+            if (i !== (this.Array.length - 1) && (this.Array[i].accY < et || this.Array[i].accY > (et * -1))) {
+              if (this.Array[i].accY >= treshold && this.Array[a].accY <= treshold) {
                 stepValid++;
               }
             }
           }
         }
         if ( this.stepStatus ) {
-          if (stepValid <= 3 && stepValid >= 1){
+          if (stepValid <= 3 && stepValid >= 1) {
             this.step = (Number(this.step) + Number(stepValid));
           } else {
             this.stepStatus = false;
           }
         } else {
-          if (stepValid <= 3 && stepValid >= 1){
+          if (stepValid <= 3 && stepValid >= 1) {
             this.stepStatus = true;
           }
         }
       }
       if ( this.result.Z == AxeMax ) {
-        let treshold = ((this.minZ + this.maxZ) / 2);
+        const treshold = ((this.minZ + this.maxZ) / 2);
         let somme = 0;
         let moyenne = 0;
         let stepValid = 0;
@@ -266,14 +281,14 @@ export class HeartPage implements OnInit {
         moyenne = (moyenne / this.Array.length );
 
         for (let i = 0; i < this.Array.length; i++) {
-          somme += (Math.pow(this.Array[i]["accZ"] - moyenne, 2));
+          somme += (Math.pow(this.Array[i].accZ - moyenne, 2));
         }
         for (let i = 0; i < this.Array.length; i++) {
-          let a = i + 1;
-          if (this.Array[i]["accZ"] <= 8.5 && this.Array[i]['accZ'] >= -8.5){
+          const a = i + 1;
+          if (this.Array[i].accZ <= 8.5 && this.Array[i].accZ >= -8.5) {
             const et = Math.sqrt((somme / (this.Array.length - 1)));
-            if (i !== (this.Array.length - 1) && (this.Array[i]["accZ"] < et || this.Array[i]["accZ"] > (et * -1))) {
-              if (this.Array[i]["accZ"] >= treshold && this.Array[a]["accZ"] <= treshold) {
+            if (i !== (this.Array.length - 1) && (this.Array[i].accZ < et || this.Array[i].accZ > (et * -1))) {
+              if (this.Array[i].accZ >= treshold && this.Array[a].accZ <= treshold) {
                 stepValid++;
               }
             }
@@ -306,8 +321,6 @@ export class HeartPage implements OnInit {
       this.minZ = 0;
     }, 1000);
   }
-
-
   async presentModal() {
     // console.log("COUCOU");
 
@@ -316,11 +329,6 @@ export class HeartPage implements OnInit {
     });
     return await modal.present();
   }
-
-
-
-
-
   ngOnInit() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: 'bar',

@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DisconnectedPageRoutingModule } from './disconnected-routing.module';
+import { ParametersPageRoutingModule } from './parameters-routing.module';
 
-import { DisconnectedPage } from './disconnected.page';
+import { ParametersPage } from './parameters.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DisconnectedPageRoutingModule
+    ParametersPageRoutingModule
   ],
-  declarations: [DisconnectedPage]
+  declarations: [ParametersPage]
 })
-export class DisconnectedPageModule {}
+export class ParametersPageModule {}
