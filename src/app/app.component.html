@@ -26,6 +26,13 @@
             <ion-icon name="person"></ion-icon>
             <ion-label>Deconnexion</ion-label>
           </ion-tab-button>
+
+          <!-- Parameters-->
+          <ion-tab-button *ngIf="isconnected() == true">
+            <ion-icon name="settings"></ion-icon>
+            <ion-label>Settings</ion-label>
+          </ion-tab-button>
+
         </ion-tab-bar>
       </ion-tabs>
     </ion-app>
