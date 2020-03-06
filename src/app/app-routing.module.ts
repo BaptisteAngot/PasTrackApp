@@ -36,7 +36,11 @@ const routes: Routes = [
     {
     path: 'disconnected',
     loadChildren: () => import('./disconnected/disconnected.module').then( m => m.DisconnectedPageModule)
-    }
+    },  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+  }
+
 ];
 
 @NgModule({

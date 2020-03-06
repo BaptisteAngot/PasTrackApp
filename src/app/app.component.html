@@ -2,12 +2,12 @@
   <ion-router-outlet>
     <ion-app>
       <ion-tabs>
-        <ion-tab-bar slot="nav">
+        <ion-tab-bar slot="nav" color="tertiary">
 
           <!--SANTE-->
           <ion-tab-button tab="heart">
             <ion-icon name="heart"></ion-icon>
-            <ion-label>Santé</ion-label>
+            <ion-label>Aujourd'hui</ion-label>
             <ion-badge>6</ion-badge>
           </ion-tab-button>
 
@@ -15,7 +15,7 @@
           <ion-tab-button tab="map">
             <ion-icon name="map"></ion-icon>
             <ion-label>Map</ion-label>
-          </ion-tab-button>
+          </ion-tab-button>    
 
           <!--PERSON-->
           <ion-tab-button tab="login" *ngIf="isconnected() == false">

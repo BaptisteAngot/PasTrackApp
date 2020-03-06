@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -16,13 +17,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
-
+import { ModalPageModule } from './modal/modal.module';
 @NgModule({
   declarations: [
       AppComponent
   ],
   entryComponents: [],
-  imports: [
+  imports: [ 
+      FormsModule,  
+      ModalPageModule,
       BrowserModule,
       IonicModule.forRoot(),
       IonicStorageModule.forRoot(),

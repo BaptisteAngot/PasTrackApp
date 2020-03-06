@@ -77,4 +77,13 @@
 
   /** google **/
   --ion-color-google: #f26052;
+
+  // ion-tabs
+  ion-tabs{
+
+    --ion-background-color: #ffffff;
+  }
+  ion-tab-bar{
+    --color: rgba(34, 31, 31, 0.692);
+  }
 }
