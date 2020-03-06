@@ -34,15 +34,16 @@
 
             <ion-row>
                 <ion-col class="signup-col">
-                    <ion-button expand="full" class="signup-col signup-col_btn" shape="round" (click)="login()" color="warning">Login
+                    <ion-button expand="full"
+                                class="signup-col signup-col_btn"
+                                shape="round" (click)="login()"
+                                color="warning">
+                        Login
                     </ion-button>
                     <p>OU</p>
-                    <ion-button expand="full" class="signup-col signup-col_btn" shape="round" color="danger">Se
-                        connecter avec Google
+                    <ion-button expand="full" class="signup-col signup-col_btn" shape="round" color="danger" (click)="movetosignup()">
+                        Inscription
                     </ion-button>
-                    <p> Pas encore inscrit ?
-                        <a href="#">Inscrivez-vous!</a>
-                    </p>
                 </ion-col>
             </ion-row>
 

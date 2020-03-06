@@ -47,6 +47,10 @@ export class LoginPage implements OnInit {
    ngOnInit() {
     }
 
+    movetosignup() {
+      this.router.navigate(['sign-up']);
+    }
+
     async presentAlert(arg) {
         const alert = await this.alertController.create({
             header: 'Un problème est survenue..',
