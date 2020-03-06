@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
 import { DeviceMotion, DeviceMotionAccelerationData  } from '@ionic-native/device-motion/ngx';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,6 +48,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     AuthService,
     Device,
     Geolocation,
+    BackgroundMode,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
