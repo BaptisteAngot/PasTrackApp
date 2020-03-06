@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     // @ts-ignore
     this.authService.authState.subscribe((state) => {
       if (state) {
-        this.router.navigate(['tab1']);
+        this.router.navigate(['earth']);
       } else {
         this.router.navigate(['login']);
       }
