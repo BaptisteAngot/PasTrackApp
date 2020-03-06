@@ -18,13 +18,17 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { ModalPageModule } from './modal/modal.module';
+
+import {Device} from '@ionic-native/device/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 @NgModule({
   declarations: [
       AppComponent
   ],
   entryComponents: [],
-  imports: [ 
-      FormsModule,  
+  imports: [
+      FormsModule,
       ModalPageModule,
       BrowserModule,
       IonicModule.forRoot(),
@@ -42,6 +46,8 @@ import { ModalPageModule } from './modal/modal.module';
     NgxMapboxGLModule,
     AuthGuardService,
     AuthService,
+    Device,
+    Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
