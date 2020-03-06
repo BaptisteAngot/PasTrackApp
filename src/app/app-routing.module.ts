@@ -21,26 +21,13 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
     },
     {
-        path: 'tab1',
-        loadChildren: () => import('./tab1/tab1.module').then(m => m.Tab1PageModule),
-        canActivate: [AuthGuardService]
-    },
-    {
-        path: 'tab2',
-        loadChildren: () => import('./tab2/tab2.module').then(m => m.Tab2PageModule)
-    },
-    {
         path: 'login',
         loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
     },
     {
-    path: 'disconnected',
-    loadChildren: () => import('./disconnected/disconnected.module').then( m => m.DisconnectedPageModule)
-    },  {
-    path: 'modal',
-    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
-  }
-
+      path: 'modal',
+      loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+    }
 ];
 
 @NgModule({
