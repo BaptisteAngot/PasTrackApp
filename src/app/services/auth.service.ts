@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { BehaviorSubject } from 'rxjs';
 import {ToastController, Platform, AlertController} from '@ionic/angular';
 import {Router} from '@angular/router';
+import { Device } from '@ionic-native/device/ngx';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -26,7 +27,8 @@ export class AuthService {
       private router: Router,
       private platform: Platform,
       public toastController: ToastController,
-      private alertCtrl: AlertController
+      private alertCtrl: AlertController,
+      private device: Device
   ) {
       this.platform.ready().then(() => {
           this.isUserLoggedIn();
@@ -38,7 +40,8 @@ export class AuthService {
         .subscribe((data: any) => {
             const session = {
                 mail: identifiant.email,
-                token: data.jwtoken
+                token: data.jwtoken,
+                id_device: this.device.uuid
             };
             this.storage.set('USER_INFO', session ).then((response) => {
                 this.authState.next(true);

@@ -22,7 +22,6 @@ export class SignUpPage implements OnInit {
       private alert: AlertService,
       private device: Device
   ) {
-    console.log(this.router.url);
     this.register = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
