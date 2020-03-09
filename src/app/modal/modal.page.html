@@ -1,16 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>modal</ion-title>
+    <ion-title text-center>Informations</ion-title>
+    <ion-buttons slot="primary" (click)="dismiss()">
+      <ion-button fill="solid" color="secondary">
+        Retour
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-toolbar>
-  <ion-buttons slot="primary" (click)="dismiss()">
-    <ion-button fill="solid" color="secondary">
-      Retour
-    </ion-button>
-  </ion-buttons>
-</ion-toolbar>
 
 <ion-content>
-<h1>BONJOUR JE SUIS LE MODEL</h1>
+  <h1 style="margin-bottom: 70px;">BONJOUR JE SUIS LE MODEL</h1>
+  <ion-button expand="full" color="tertiary" style="margin-bottom: 30px;"
+    >Nombre de Pas par semaine :
+  </ion-button>
+  <ion-button expand="full" color="tertiary"  style="margin-bottom: 30px;"
+    >Nombres de Pas par mois:
+  </ion-button>
+  <ion-button expand="full" color="tertiary"  style="margin-bottom: 30px;"
+    >Nombre de Pas par an :
+  </ion-button>
+  
 </ion-content>
