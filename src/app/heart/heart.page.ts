@@ -94,7 +94,7 @@ export class HeartPage implements OnInit {
     this.gyro();
   }
   isconnected() {
-    if (this.authService.isAuthenticated() === false) {
+    if (!this.authService.isUserLoggedIn) {
       this.router.navigate(['login']);
     }
   }
@@ -322,8 +322,6 @@ export class HeartPage implements OnInit {
     }, 1000);
   }
   async presentModal() {
-    // console.log("COUCOU");
-
     const modal = await this.modalController.create({
       component: ModalPage
     });

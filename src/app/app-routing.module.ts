@@ -3,7 +3,7 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {AuthGuardService} from './services/auth-guard.service';
 
 const routes: Routes = [
-    {path: '', redirectTo: 'hearth*', pathMatch: 'full'},
+    {path: '', redirectTo: 'root', pathMatch: 'full'},
     {
         path: 'map',
         loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)
@@ -25,14 +25,17 @@ const routes: Routes = [
         loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
     },
     {
-      path: 'modal',
-      loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+        path: 'modal',
+        loadChildren: () => import('./modal/modal.module').then(m => m.ModalPageModule)
     },
-  {
-    path: 'parameters',
-    loadChildren: () => import('./parameters/parameters.module').then( m => m.ParametersPageModule)
-  }
-
+    {
+        path: 'parameters',
+        loadChildren: () => import('./parameters/parameters.module').then(m => m.ParametersPageModule)
+    },
+    {
+        path: 'sign-up',
+        loadChildren: () => import('./sign-up/sign-up.module').then(m => m.SignUpPageModule)
+    }
 ];
 
 @NgModule({

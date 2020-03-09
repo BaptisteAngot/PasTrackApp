@@ -43,6 +43,7 @@ export class AppComponent implements OnInit {
       if (state) {
         this.router.navigate(['heart']);
       } else {
+
         this.router.navigate(['login']);
       }
     });
