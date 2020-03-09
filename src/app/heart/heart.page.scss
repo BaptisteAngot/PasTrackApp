@@ -1,6 +1,6 @@
 //background  appli
 ion-content {
-  background: linear-gradient(#8b6adf, #0d094b);
+  background:#E8BC2C;
 }
 
 //Sphère//
@@ -13,10 +13,10 @@ ion-content {
   position: relative;
   background: radial-gradient(
     circle at 50% 120%,
-    #0d094b,
-    #8b6adf 10%,
-    #0d094b 80%,
-    #0d094b 100%
+    #E8BC2C,
+    rgb(185, 153, 45) 10%,
+    rgb(253, 194, 0) 80%,
+    rgb(192, 147, 0) 100%
   );
 margin-left: 85px;
 }
@@ -30,7 +30,7 @@ margin-left: 85px;
   border-radius: 50%;
   background: radial-gradient(
     circle at 50% 0px,
-    #340468,
+    #E8BC2C,
     rgba(15, 8, 71, 0) 58%
   );
   -webkit-filter: blur(5px);
@@ -82,7 +82,7 @@ margin-left: 85px;
   &_number {
     font-size: 3rem;
     font-weight: bolder;
-    color: #fff;
+    color: black;
   }
 
 }
@@ -93,7 +93,7 @@ margin-left: 85px;
 .title {
   position: absolute;
   z-index: 9999;
-  color: #fff;
+  color: black;
   width: 100%;
   text-align: center;
 }
@@ -129,7 +129,7 @@ margin-left: 85px;
  }
 
  .titlo{
-   color: rgb(224, 221, 11);
+   color: black;
    font-size: 0.8rem;
  font-weight: 500;
  }
