@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {AuthService} from './services/auth.service';
 import { AlertController } from '@ionic/angular';
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
+import { CountStepServiceService} from './services/count-step-service.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { BackgroundMode } from '@ionic-native/background-mode/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+  step;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -22,6 +24,7 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
     private alertCtrl: AlertController,
     private backgroundMode: BackgroundMode,
+    private countStepServiceService: CountStepServiceService
   ) {
     this.initializeApp();
   }
@@ -61,8 +64,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    setInterval(() => {
+      this.step = this.countStepServiceService.gyro();
+      this.countStepServiceService.setstep(this.step);
+    });
   }
-
   async showConfirm() {
     const confirm = await this.alertCtrl.create({
       header: 'Êtes vous sûr ?',

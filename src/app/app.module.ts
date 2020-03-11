@@ -21,6 +21,7 @@ import { ModalPageModule } from './modal/modal.module';
 
 import {Device} from '@ionic-native/device/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import {CountStepServiceService} from './services/count-step-service.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
           accessToken: 'pk.eyJ1IjoiYmFwdGlzdGVhbmdvdCIsImEiOiJjazNrYTQwdGUwMHdyM2N0NXhhM210YzNzIn0.YefTLUjfpX1uMKBE885C-g',
       })],
   providers: [
+    AppComponent,
+    CountStepServiceService,
     DeviceMotion,
     Gyroscope,
     StatusBar,
