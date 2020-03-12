@@ -29,7 +29,6 @@ export class MapPage implements OnInit {
                     })
                 })
                     .then((data) => {
-                        console.log('DATA API:');
                         data = data[0];
                         // save full coordinate list for later
                         // @ts-ignore
@@ -52,7 +51,7 @@ export class MapPage implements OnInit {
                         });
 
                         // setup the viewport
-                        map.jumpTo({ center: coordinates[0], zoom: 17 });
+                        map.jumpTo({ center: coordinates[0], zoom: 12 });
                         map.setPitch(30);
 
                         // on a regular basis, add more coordinates from the saved list and update the map
@@ -70,7 +69,7 @@ export class MapPage implements OnInit {
                             } else {
                                 window.clearInterval(timer);
                             }
-                        }, 50);
+                        }, 2);
                     })
                     .catch((err) => {
                         throw err;
