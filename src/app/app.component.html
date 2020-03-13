@@ -1,41 +1,41 @@
 <ion-app>
-    <ion-router-outlet>
-        <ion-app>
-            <ion-tabs>
-                <ion-tab-bar slot="nav">
+  <ion-router-outlet>
+    <ion-app>
+      <ion-tabs>
+        <ion-tab-bar slot="nav" color="primary">
 
-                    <!--SANTE-->
-                    <ion-tab-button tab="heart">
-                        <ion-icon name="heart"></ion-icon>
-                        <ion-label>Santé</ion-label>
-                        <ion-badge>6</ion-badge>
-                    </ion-tab-button>
+          <!--SANTE-->
+          <ion-tab-button tab="heart" *ngIf="isconnected() == true">
+            <ion-icon name="heart"></ion-icon>
+            <ion-label>Aujourd'hui</ion-label>
+            <ion-badge>6</ion-badge>
+          </ion-tab-button>
 
-                    <!--MAP-->
-                    <ion-tab-button tab="map">
-                        <ion-icon name="map"></ion-icon>
-                        <ion-label>Map</ion-label>
-                    </ion-tab-button>
+          <!--MAP-->
+          <ion-tab-button tab="map" *ngIf="isconnected() == true">
+            <ion-icon name="map"></ion-icon>
+            <ion-label>Map</ion-label>
+          </ion-tab-button>
 
-                    <!--PERSON-->
-                    <ion-tab-button tab="person">
-                        <ion-icon name="person"></ion-icon>
-                        <ion-label>Profil</ion-label>
-                    </ion-tab-button>
+          <!--PERSON-->
+          <ion-tab-button tab="login" *ngIf="isconnected() == false">
+            <ion-icon name="person"></ion-icon>
+            <ion-label>Login</ion-label>
+          </ion-tab-button>
+          <ion-tab-button *ngIf="isconnected() == true" (click)="showConfirm()">
+            <ion-icon name="person"></ion-icon>
+            <ion-label>Deconnexion</ion-label>
+          </ion-tab-button>
 
-                    <ion-tab-button tab="tab1">
-                        <ion-icon name="alert"></ion-icon>
-                        <ion-label>tab1</ion-label>
-                    </ion-tab-button>
+          <!-- Parameters-->
+          <ion-tab-button tab="parameters" *ngIf="isconnected() == true">
+            <ion-icon name="settings"></ion-icon>
+            <ion-label>Settings</ion-label>
+          </ion-tab-button>
 
-                    <ion-tab-button tab="tab2">
-                        <ion-icon name="alert"></ion-icon>
-                        <ion-label>tab2</ion-label>
-                    </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+    </ion-app>
 
-                </ion-tab-bar>
-            </ion-tabs>
-        </ion-app>
-
-    </ion-router-outlet>
+  </ion-router-outlet>
 </ion-app>

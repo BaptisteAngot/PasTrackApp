@@ -1,8 +1,9 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {AuthGuardService} from './services/auth-guard.service';
 
 const routes: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: '', redirectTo: 'root', pathMatch: 'full'},
     {
         path: 'map',
         loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)
@@ -20,12 +21,20 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
     },
     {
-        path: 'tab1',
-        loadChildren: () => import('./tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'login',
+        loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
     },
     {
-        path: 'tab2',
-        loadChildren: () => import('./tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'modal',
+        loadChildren: () => import('./modal/modal.module').then(m => m.ModalPageModule)
+    },
+    {
+        path: 'parameters',
+        loadChildren: () => import('./parameters/parameters.module').then(m => m.ParametersPageModule)
+    },
+    {
+        path: 'sign-up',
+        loadChildren: () => import('./sign-up/sign-up.module').then(m => m.SignUpPageModule)
     }
 ];
 

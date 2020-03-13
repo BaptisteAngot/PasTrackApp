@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>map</ion-title>
+    <ion-title text-center>map</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="noScroll">
+  <mgl-map id="map" (load)="onMapLoad($event)"
+          [style]="'mapbox://styles/mapbox/dark-v10'"
+          [zoom]="[9]"
+          [center]="[-74.50, 40]"
+  >
+  </mgl-map>
 </ion-content>
