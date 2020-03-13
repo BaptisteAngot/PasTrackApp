@@ -26,7 +26,7 @@ export class HeartPage implements OnInit {
    // @ts-ignore
   @ViewChild('lineCanvas') lineCanvas: ElementRef;
   private lineChart: Chart;
-  private step;
+  public step;
   constructor(
       public modalController: ModalController,
       private device: Device,
